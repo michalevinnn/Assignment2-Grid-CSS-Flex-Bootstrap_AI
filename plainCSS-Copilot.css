@@ -6,18 +6,23 @@
 
 body {
     font-family: Arial, sans-serif;
+    height: 100vh; /* Mandatory for percentages to work */
+    overflow: hidden; /* Prevents unnecessary scrolling */
 }
 
-/* Main container: 2-column layout */
+/* Main container */
 .container {
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 10px;
-    overflow: hidden;
+    /* Clears floats */
+    overflow: hidden; 
 }
 
 /* Sidebar: 20% width */
 .sidebar {
-    width: calc(20% - 5px);
+    /* Width 20% minus the right margin */
+    width: calc(20% - 10px); 
     height: 100%;
     border: 2px solid red;
     float: left;
@@ -26,22 +31,28 @@ body {
 
 /* Main Content: 80% width */
 .main-content {
-    width: calc(80% - 5px);
+    width: 80%; /* The remaining width */
     height: 100%;
     float: left;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
-/* Row: Each row gets equal height */
+/* Row: Each row gets equal height using Calc instead of Flex */
 .row {
-    flex: 1;
+    width: 100%;
+    /* Calculation: 100% height, minus two 10px margins, divided by 3 rows */
+    height: calc((100% - 20px) / 3); 
+    float: left;
+    margin-bottom: 10px; /* Gap between rows */
+}
+
+/* Remove bottom margin for the last row to prevent overflow */
+.row:last-child {
     margin-bottom: 0;
 }
 
-/* Row 1: Four equal boxes (25% width each) */
+/* Row 1: Four equal boxes */
 .box-quarter {
+    /* Calculation: 25% minus 3 gaps of 10px distributed over 4 boxes (7.5px) */
     width: calc(25% - 7.5px);
     height: 100%;
     border: 2px solid red;
@@ -53,19 +64,21 @@ body {
     margin-right: 0;
 }
 
-/* Row 2: Left half (50% width) */
+/* Row 2: Left half */
 .half-left {
-    width: calc(50% - 5px);
+    width: calc(50% - 5px); /* 50% minus half gap */
     height: 100%;
     float: left;
     margin-right: 10px;
 }
 
-/* Row 2: Strips inside the left half */
+/* Row 2: Strips inside */
 .strip {
     width: 100%;
+    /* Half height minus half gap */
     height: calc(50% - 5px);
     border: 2px solid red;
+    float: left; /* Important to prevent margin collapse */
     margin-bottom: 10px;
 }
 
@@ -73,7 +86,7 @@ body {
     margin-bottom: 0;
 }
 
-/* Row 2: Right half (50% width) */
+/* Row 2: Right half */
 .half-right {
     width: calc(50% - 5px);
     height: 100%;
@@ -81,7 +94,7 @@ body {
     float: left;
 }
 
-/* Row 3: Wide box (66% width) */
+/* Row 3: Wide box */
 .box-wide {
     width: calc(66.66% - 5px);
     height: 100%;
@@ -90,7 +103,7 @@ body {
     margin-right: 10px;
 }
 
-/* Row 3: Narrow box (33% width) */
+/* Row 3: Narrow box */
 .box-narrow {
     width: calc(33.33% - 5px);
     height: 100%;
@@ -100,77 +113,43 @@ body {
 
 /* Responsive: Screens smaller than 750px */
 @media (max-width: 750px) {
+    body {
+        height: auto;
+        overflow: auto;
+    }
+
     .container {
         height: auto;
+        overflow: visible;
     }
     
-    .sidebar {
-        width: 100%;
-        height: 100px;
-        float: none;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .main-content {
-        width: 100%;
-        height: auto;
-        float: none;
-        display: block;
-    }
-    
-    .row {
-        margin-bottom: 10px;
-        height: auto;
-        overflow: hidden;
-    }
-    
-    .box-quarter {
-        width: 100%;
-        height: auto;
-        min-height: 80px;
-        float: none;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .box-quarter:last-child {
-        margin-bottom: 0;
-    }
-    
-    .half-left {
-        width: 100%;
-        height: auto;
-        float: none;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .half-right {
-        width: 100%;
-        height: auto;
-        min-height: 80px;
-        float: none;
-    }
-    
-    .strip {
-        height: 80px;
-        margin-bottom: 10px;
-    }
-    
-    .box-wide {
-        width: 100%;
-        height: auto;
-        min-height: 80px;
-        float: none;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
+    .sidebar, 
+    .main-content, 
+    .row, 
+    .box-quarter, 
+    .half-left, 
+    .half-right, 
+    .box-wide, 
     .box-narrow {
         width: 100%;
-        height: auto;
-        min-height: 80px;
+        height: auto; /* Reset calculated height */
+        float: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* Set fixed height for boxes on mobile for visibility */
+    .sidebar, .box-quarter, .half-right, .box-wide, .box-narrow {
+        height: 150px;
+    }
+
+    .half-left {
+        height: auto; /* Strip container adapts to content */
+    }
+
+    .strip {
+        height: 100px;
         float: none;
     }
 }
