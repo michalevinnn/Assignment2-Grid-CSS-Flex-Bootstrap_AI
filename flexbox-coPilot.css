@@ -1,0 +1,173 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Main Container - Flexbox Layout */
+.container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar - 20% width */
+.sidebar {
+    flex: 0 0 20%;
+    border: 2px solid red;
+    padding: 15px;
+}
+
+/* Main Content - 80% width */
+.main-content {
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Row base styles - equal height for rows in main content */
+.row {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+/* Row 1: Four equal boxes */
+.row-1 {
+    flex-direction: row;
+}
+
+.row-1 .box {
+    flex: 1;
+    border: 2px solid red;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Row 2: Left half (2 strips) + Right half (1 big box) */
+.row-2 {
+    flex-direction: row;
+}
+
+.left-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.strip {
+    flex: 1;
+    border: 2px solid red;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-half {
+    flex: 1;
+}
+
+.big-box {
+    height: 100%;
+    border: 2px solid red;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Row 3: Wide box (66%) + Narrow box (33%) */
+.row-3 {
+    flex-direction: row;
+}
+
+.wide-box {
+    flex: 0 0 calc(66.66% - 5px);
+    border: 2px solid red;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.narrow-box {
+    flex: 0 0 calc(33.33% - 5px);
+    border: 2px solid red;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design - Stacks vertically on screens < 750px */
+@media (max-width: 750px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .sidebar {
+        flex: 0 0 100px;
+    }
+
+    .main-content {
+        flex: 0 0 auto;
+    }
+
+    .row {
+        flex: none;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .row-1 .box {
+        flex: 0 0 auto;
+        min-height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .row-1 .box:last-child {
+        margin-bottom: 0;
+    }
+
+    .left-half {
+        flex: 0 0 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .strip {
+        min-height: 80px;
+    }
+
+    .right-half {
+        flex: 0 0 100%;
+    }
+
+    .big-box {
+        height: auto;
+        min-height: 80px;
+    }
+
+    .wide-box {
+        flex: 0 0 calc(100% - 10px);
+        margin-bottom: 10px;
+    }
+
+    .narrow-box {
+        flex: 0 0 100%;
+    }
+}

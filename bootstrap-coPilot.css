@@ -1,0 +1,73 @@
+/* --- Global Reset & Full Height --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling on desktop, same as original */
+}
+
+/* --- Box Styling --- */
+/* We apply the border to the inner div, not the column itself.
+   This allows Bootstrap's gutters (padding) to act as visual margins. */
+.box {
+    border: 2px solid red;
+    height: 100%;       /* Fill the parent column height */
+    width: 100%;        /* Fill the parent column width */
+    background: none;   /* Transparent background */
+}
+
+/* --- DESKTOP LAYOUT (Overrides) --- */
+/* Bootstrap 'md' breakpoint is 768px. Above this, we enforce specific logic. */
+@media (min-width: 768px) {
+    
+    /* 1. Custom Width Overrides 
+       Bootstrap's 12-column grid cannot do exactly 20%.
+       We force it here to match the Plain CSS assignment. */
+    .custom-sidebar {
+        flex: 0 0 20%;
+        max-width: 20%;
+        width: 20%;
+    }
+    
+    .custom-main {
+        flex: 0 0 80%;
+        max-width: 80%;
+        width: 80%;
+    }
+
+    /* 2. Fixed Row Heights
+       Force rows to be exactly 1/3 of the height */
+    .h-33 {
+        height: 33.33%;
+    }
+}
+
+/* --- MOBILE LAYOUT (< 768px) --- */
+/* This covers the "750px and below" requirement */
+@media (max-width: 767.98px) {
+    
+    html, body {
+        height: auto;     /* Release fixed height */
+        overflow-y: auto; /* Enable scrolling */
+    }
+
+    /* Reset strict heights so content can stack naturally */
+    .h-100, .h-33 {
+        height: auto !important;
+    }
+
+    /* Give boxes a fixed height so they look good in the stack */
+    .box {
+        min-height: 150px;
+    }
+    
+    /* Ensure all columns take full width and have space below them */
+    .col-3, .col-md-3, .col-md-6, .col-md-8, .col-md-4 {
+        width: 100%; 
+        margin-bottom: 10px;
+    }
+    
+    /* Fix spacing for the stacked strips on mobile */
+    .gap-2 {
+        gap: 10px !important; 
+    }
+}

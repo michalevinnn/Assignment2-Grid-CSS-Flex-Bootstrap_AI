@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Grid Layout</title>
+    <link rel="stylesheet" href="plainCSS-Copilot.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar (20% width) -->
+        <div class="sidebar"></div>
+        
+        <!-- Right Main Content (80% width) -->
+        <div class="main-content">
+            
+            <!-- Row 1: Four equal boxes (25% width each) -->
+            <div class="row">
+                <div class="box-quarter"></div>
+                <div class="box-quarter"></div>
+                <div class="box-quarter"></div>
+                <div class="box-quarter"></div>
+            </div>
+            
+            <!-- Row 2: Split into two halves -->
+            <div class="row">
+                <div class="half-left">
+                    <div class="strip"></div>
+                    <div class="strip"></div>
+                </div>
+                <div class="half-right"></div>
+            </div>
+            
+            <!-- Row 3: One wide (66%) and one narrow (33%) -->
+            <div class="row">
+                <div class="box-wide"></div>
+                <div class="box-narrow"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

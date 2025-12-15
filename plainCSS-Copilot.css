@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Main container: 2-column layout */
+.container {
+    height: 100vh;
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* Sidebar: 20% width */
+.sidebar {
+    width: calc(20% - 5px);
+    height: 100%;
+    border: 2px solid red;
+    float: left;
+    margin-right: 10px;
+}
+
+/* Main Content: 80% width */
+.main-content {
+    width: calc(80% - 5px);
+    height: 100%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Row: Each row gets equal height */
+.row {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Row 1: Four equal boxes (25% width each) */
+.box-quarter {
+    width: calc(25% - 7.5px);
+    height: 100%;
+    border: 2px solid red;
+    float: left;
+    margin-right: 10px;
+}
+
+.box-quarter:last-child {
+    margin-right: 0;
+}
+
+/* Row 2: Left half (50% width) */
+.half-left {
+    width: calc(50% - 5px);
+    height: 100%;
+    float: left;
+    margin-right: 10px;
+}
+
+/* Row 2: Strips inside the left half */
+.strip {
+    width: 100%;
+    height: calc(50% - 5px);
+    border: 2px solid red;
+    margin-bottom: 10px;
+}
+
+.strip:last-child {
+    margin-bottom: 0;
+}
+
+/* Row 2: Right half (50% width) */
+.half-right {
+    width: calc(50% - 5px);
+    height: 100%;
+    border: 2px solid red;
+    float: left;
+}
+
+/* Row 3: Wide box (66% width) */
+.box-wide {
+    width: calc(66.66% - 5px);
+    height: 100%;
+    border: 2px solid red;
+    float: left;
+    margin-right: 10px;
+}
+
+/* Row 3: Narrow box (33% width) */
+.box-narrow {
+    width: calc(33.33% - 5px);
+    height: 100%;
+    border: 2px solid red;
+    float: left;
+}
+
+/* Responsive: Screens smaller than 750px */
+@media (max-width: 750px) {
+    .container {
+        height: auto;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 100px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .main-content {
+        width: 100%;
+        height: auto;
+        float: none;
+        display: block;
+    }
+    
+    .row {
+        margin-bottom: 10px;
+        height: auto;
+        overflow: hidden;
+    }
+    
+    .box-quarter {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .box-quarter:last-child {
+        margin-bottom: 0;
+    }
+    
+    .half-left {
+        width: 100%;
+        height: auto;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .half-right {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        float: none;
+    }
+    
+    .strip {
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    .box-wide {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        float: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .box-narrow {
+        width: 100%;
+        height: auto;
+        min-height: 80px;
+        float: none;
+    }
+}

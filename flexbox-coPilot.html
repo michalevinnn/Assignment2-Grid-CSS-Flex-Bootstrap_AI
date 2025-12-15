@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Responsive Layout</title>
+    <link rel="stylesheet" href="flexbox-coPilot.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <p>20% width</p>
+        </aside>
+
+        <!-- Right Main Content -->
+        <main class="main-content">
+            <!-- Row 1: Four equal boxes -->
+            <div class="row row-1">
+                <div class="box">Box 1</div>
+                <div class="box">Box 2</div>
+                <div class="box">Box 3</div>
+                <div class="box">Box 4</div>
+            </div>
+
+            <!-- Row 2: Left half with strips + Right half with big box -->
+            <div class="row row-2">
+                <div class="left-half">
+                    <div class="strip">Strip 1</div>
+                    <div class="strip">Strip 2</div>
+                </div>
+                <div class="right-half">
+                    <div class="big-box">Big Box</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Wide box (66%) + Narrow box (33%) -->
+            <div class="row row-3">
+                <div class="wide-box">Wide Box (66%)</div>
+                <div class="narrow-box">Narrow (33%)</div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
