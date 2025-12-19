@@ -3,4 +3,5 @@
 חלק א' - דף CSSPLAIN שקודד באופן עצמאי. 
 חלק ב' - שלושה דפים שנוצרו ע"י github copilot.
 
-להלן לינק לאתר: https://github.com/michalevinnn/Assignment2-Grid-CSS-Flex-Bootstrap_AI
+להלן לינק לאתר:
+https://michalevinnn.github.io/Assignment2-Grid-CSS-Flex-Bootstrap_AI/
